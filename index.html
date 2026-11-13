@@ -70,6 +70,10 @@ h2 em{font-family:var(--serif);font-weight:400;font-style:italic;letter-spacing:
 /* barra y navegación */
 .topbar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px clamp(16px,3vw,32px);font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:linear-gradient(var(--bg),transparent);pointer-events:none}
 .topbar .brand{color:var(--ink)}
+.topbar .expone{letter-spacing:.06em;text-transform:none;font-size:.8rem;padding:.35em .9em;border-radius:99px;background:rgba(255,77,26,.15);color:var(--fire2);border:1px solid rgba(255,77,26,.4)}
+.topbar .expone:empty{display:none}
+.topbar .expone.todos{background:rgba(120,140,255,.14);color:var(--night2);border-color:rgba(120,140,255,.4)}
+@media (max-width:640px){.topbar .brand{display:none}}
 .progress{position:fixed;top:0;left:0;height:3px;z-index:60;background:linear-gradient(90deg,var(--fire2),var(--fire1),var(--night2),var(--night1));background-size:200% 100%;animation:flow 4s linear infinite;width:0}
 .dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:10px}
 .dots button{width:9px;height:9px;border-radius:50%;background:var(--dim);transition:.3s;position:relative}
@@ -400,7 +404,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
   <button class="skip" id="skipBtn">Saltar intro →</button>
 </div>
 
-<div class="topbar"><span class="brand">IFTS N°1 · Humo en la Ruta 201</span><span id="secLabel"></span></div>
+<div class="topbar"><span class="brand">IFTS N°1 · Humo en la Ruta 201</span><span class="expone" id="expone"></span><span id="secLabel"></span></div>
 <nav class="dots" id="dots"></nav>
 <div class="keyhint">← → para pasar de página</div>
 <div class="pager" id="pager"><button class="pprev" id="pPrev">← Anterior</button><span class="pc" id="pCount"></span><button class="pnext" id="pNext">Siguiente →</button></div>
@@ -435,8 +439,8 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
     <h2 class="reveal d1">Del anuncio a la póliza <em class="night-text">en tres días.</em></h2>
     <div class="flow">
       <div class="card reveal d1"><span class="n">Mediados de abril</span><h4>El anuncio</h4><p>Carlos ve un anuncio en Facebook e Instagram y toca «Enviar mensaje»: se abre una conversación de WhatsApp.</p></div>
-      <div class="card reveal d2"><span class="n">El bot</span><h4>Perfil del asegurable</h4><p>Un asistente automático pide marca, modelo, año, uso y si tiene GNC. Lo guía por un recomendador de cobertura y lo deriva al productor.</p></div>
-      <div class="card reveal d3"><span class="n">17/04</span><h4>Cotización y propuesta</h4><p>El productor compara compañías, recomienda una aseguradora y la cobertura B. Carga la propuesta. El certificado de cobertura rige desde las 12 h.</p></div>
+      <div class="card reveal d2"><span class="n">El bot</span><h4>Perfil del asegurable</h4><p>Un asistente automático le pregunta la antigüedad del auto (2006 a 2010) y qué quiere cubrir. Como quiere cubrir también su vehículo, le recomienda Terceros Completo y lo lleva al cotizador web, donde carga marca, modelo y GNC. Toca «Me interesa» y lo atiende el productor.</p></div>
+      <div class="card reveal d3"><span class="n">17/04</span><h4>Cotización y propuesta</h4><p>El productor compara compañías, recomienda Ñandú Seguros y la cobertura B. Carga la propuesta. El certificado de cobertura rige desde las 12 h.</p></div>
       <div class="card reveal d4"><span class="n">18/04</span><h4>Inspección previa digital</h4><p>Carlos sube las fotos del auto desde el celular y recibe el comprobante.</p></div>
       <div class="card reveal d4"><span class="n">20/04</span><h4>Emisión de la póliza</h4><p>Endoso 0. Las condiciones particulares y generales integran el contrato (art. 12, Ley 17.418).</p></div>
     </div>
@@ -454,7 +458,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
     <h2 class="reveal d1">El dato que <em class="fire-text">valió $750.000.</em></h2>
     <div class="pol-grid">
       <div class="policy reveal d2">
-        <h3>Compañía aseguradora</h3>
+        <h3>Ñandú Seguros S.A. <small style="font-weight:400;opacity:.6">(nombre ficticio)</small></h3>
         <div class="r"><span>Vehículo</span><b>Chevrolet Classic 1.4 LT · 2010 · particular</b></div>
         <div class="r"><span>Cobertura</span><b>B: RC, robo total, incendio total y destrucción total</b></div>
         <div class="r"><span>Responsabilidad Civil</span><b>$208.000.000</b></div>
@@ -495,7 +499,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
       </svg>
       <div class="steps reveal d3">
         <button class="step" data-s="st1"><b>20:00 · Olor a quemado</b><span>Carlos maneja solo. El olor sale del tablero, de adentro de su propio auto.</span></button>
-        <button class="step" data-s="st2"><b>Frena y abre el capó</b><span>Quiere desconectar la batería, pero el motor ya se está incendiando. Sin heridos, sin ambulancia. El daño se concentra en el capó.</span></button>
+        <button class="step" data-s="st2"><b>Frena y abre el capó</b><span>Quiere desconectar la batería, pero el motor ya se está incendiando. Sin heridos, sin ambulancia. Intervienen los bomberos voluntarios y el daño se concentra en el capó.</span></button>
         <button class="step blue" data-s="st3"><b>Al día siguiente</b><span>El auto quedó la noche en la vía pública. Cuando Carlos llega con la grúa, el cilindro de GNC ya no está: <b>se lo robaron.</b></span></button>
       </div>
     </div>
@@ -507,7 +511,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
     <div class="eyebrow reveal"><b>00</b> Desarrollo · La denuncia</div>
     <h2 class="reveal d1">Esa misma noche, <em class="ok-text">la denuncia.</em></h2>
     <div class="denuncia">
-      <div class="card reveal d1"><span class="n">Esa misma noche</span><h4>WhatsApp</h4><p>El flujo automático de siniestros pide fotos y un relato, crea la carpeta del caso y avisa al productor.</p></div>
+      <div class="card reveal d1"><span class="n">Esa misma noche</span><h4>WhatsApp</h4><p>Elige «Ya soy cliente» → «Denunciar siniestro». El bot encuentra la póliza por la patente y pide fecha, hora, lugar, tipo de siniestro, relato, daños y quién manejaba. Le da un número de referencia y las fotos van por mail.</p></div>
       <div class="card reveal d2"><span class="n">Sábado 01/08</span><h4>Denuncia registrada</h4><p>El productor carga la denuncia en el sistema de la compañía. Un día después del hecho.</p></div>
       <div class="card reveal d3"><span class="n">Art. 46, Ley 17.418</span><h4>Plazo: 3 días</h4><p>La denuncia se hizo dentro del plazo legal.</p></div>
     </div>
@@ -727,7 +731,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
       <div><h5>Profesora</h5><p id="docente"></p></div>
       <div><h5>Integrantes</h5><p id="integrantes"></p></div>
     </div>
-    <p class="anon">Caso real. Los datos personales del asegurado, el dominio del vehículo, los números de póliza y de siniestro y los datos bancarios fueron anonimizados.</p>
+    <p class="anon">Caso real. Los datos personales del asegurado, el dominio del vehículo, los números de póliza y de siniestro y los datos bancarios fueron anonimizados. La aseguradora (Ñandú Seguros S.A.) y la agencia (Oeste Asesores de Seguros) tienen nombres ficticios, y los documentos de los anexos son recreaciones ilustrativas, copia fiel del caso real.</p>
     <details class="sources">
       <summary>Normas y cláusulas aplicadas</summary>
       <ul>
@@ -746,12 +750,16 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 <script>
 /* =========================================================
    CONFIGURACIÓN: editá acá los nombres del grupo.
-   Los 4 primeros integrantes se asignan, en orden,
+   Los 4 integrantes se asignan, en orden,
    a las variables 1 a 4 (como en el TP).
+   El reparto de páginas está en CONFIG.expone.
    ========================================================= */
 const CONFIG = {
   docente: "Gabriela Bruzzese",
-  integrantes: ["Alumno 1", "Alumno 2", "Alumno 3", "Alumno 4"]
+  integrantes: ["Francisco Vertz", "Rebeca Irusta", "Natalia Meza", "Leandro Vázquez"],
+  /* Quién expone cada página (índice en integrantes; "todos" = el grupo).
+     Sorteado al azar: 3 páginas por integrante + 1 variable cada uno. */
+  expone: {hook:2, contratacion:3, poliza:1, hecho:3, denuncia:1, gestion:2, plazos:0, monto:1, total:3, postventa:0, conclusiones:0, subjetiva:2, variables:"variables", cierre:"todos", gracias:"todos"}
 };
 document.getElementById('docente').textContent = CONFIG.docente;
 document.getElementById('integrantes').innerHTML = CONFIG.integrantes.join('<br>');
@@ -812,6 +820,9 @@ function go(i){
   sec.dispatchEvent(new Event('enter'));
   [...dots.children].forEach((d,j)=>d.classList.toggle('on', j===i));
   $('#secLabel').textContent = sec.dataset.label;
+  { const e = CONFIG.expone[sec.id], el = $('#expone');
+    el.classList.toggle('todos', typeof e==='string');
+    el.textContent = e==='todos' ? 'Expone: todo el grupo' : e==='variables' ? 'Expone: una variable cada uno' : (e!==undefined ? 'Expone: '+CONFIG.integrantes[e] : ''); }
   $('#progress').style.width = ((i+1)/sections.length*100) + '%';
   $('#pCount').innerHTML = `<b>${String(i+1).padStart(2,'0')}</b> / ${String(sections.length).padStart(2,'0')}`;
   $('#pPrev').disabled = i===0; $('#pNext').disabled = i===sections.length-1;
@@ -849,12 +860,12 @@ document.querySelectorAll('.step').forEach(st => st.onclick = () => {
 
 /* ---------- cronología ---------- */
 const CH = [
-  ['01/08','Aseguradora','Registra la denuncia y pide título, denuncia policial, acta de bomberos y datos para inspeccionar.','Anexo E'],
+  ['01/08','Ñandú Seguros','Registra la denuncia y pide título, denuncia policial, acta de bomberos y datos para inspeccionar.','Anexo E'],
   ['03/08','Liquidadora','Pide fotos con la patente visible, foto del momento del siniestro, acta de bomberos (o nota de cómo se apagó el fuego), denuncia policial, título, cédula y DNI.','Anexo F'],
   ['03/08','Productor','Pide la documentación al asegurado, carga la solicitud de inspección y consulta cómo ampliar la denuncia por el robo del GNC.','Anexo F'],
   ['04/08','Productor','Envía fotos y documentación del vehículo.','Anexos F y G'],
   ['05/08','Productor','Pide la ampliación de la denuncia por el robo del cilindro y adjunta la denuncia policial del robo.','Anexo H'],
-  ['05/08','Aseguradora','Confirma la ampliación registrada.','Anexo H'],
+  ['05/08','Ñandú Seguros','Confirma la ampliación registrada.','Anexo H'],
   ['05/08','Liquidadora','Solo falta la denuncia policial del incendio.','Anexo F'],
   ['05/08','Productor','Explica que la comisaría no toma denuncias por incendio de vehículos y que el incendio figura en la declaración de la denuncia por robo.','Anexo F'],
   ['06/08','Liquidadora','Acepta la documentación y confirma la inspección.','Anexo F'],
@@ -863,11 +874,11 @@ const CH = [
   ['13/08','Liquidadora','Emite nueva carta de aceptación por <b>$9.033.000</b>.','Anexo I',1],
   ['26/08','Productor','Envía carta de aceptación firmada, formulario UIF, constancia de CBU y de CUIL.','Anexo J'],
   ['27/08','Liquidadora','Pasa el caso al área de Totales.','Anexo J'],
-  ['03/09','Gestoría de la aseguradora','Pide la baja registral (formularios 04, 02 y 13D), baja impositiva, llaves y cédula del GNC. Reintegra hasta $96.502 de gestor.','Anexo K'],
+  ['03/09','Gestoría de la compañía','Pide la baja registral (formularios 04, 02 y 13D), baja impositiva, llaves y cédula del GNC. Reintegra hasta $96.502 de gestor.','Anexo K'],
   ['07/09','Productor','Envía la documentación escaneada.','Anexo K'],
   ['08/09','Asegurado','Entrega los originales en la compañía; se gestiona el pago.','Anexo K'],
-  ['09/09','Aseguradora','Genera la orden de pago por <b>$9.033.000</b> a nombre del asegurado.','Anexo L',1],
-  ['10/09','Aseguradora','Informa la acreditación dentro de las 48 h.','Anexo L']
+  ['09/09','Ñandú Seguros','Genera la orden de pago por <b>$9.033.000</b> a nombre del asegurado.','Anexo L',1],
+  ['10/09','Ñandú Seguros','Informa la acreditación dentro de las 48 h.','Anexo L']
 ];
 let ci = 0;
 const chTrack = $('#chTrack');
